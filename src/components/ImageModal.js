@@ -23,21 +23,22 @@ const ImageModal = ({ image, onClose }) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div ref={modalRef} className="bg-white p-4 rounded-lg max-w-lg">
-        <button
-          className="absolute top-0 right-0 m-3 text-gray-600 hover:text-gray-800"
-          onClick={onClose}
-        >
-          Close
-        </button>
-        <div className="relative w-full h-0 pb-1/1">
-          <Image src={image.imageUrl} alt={`Image`} width={500} height={500} />
-        </div>
-        <div className="mt-4">
-          <p>Camera Make: {image.metadata.cameraMake || "Unknown"}</p>
-          <p>Camera Model: {image.metadata.cameraModel || "Unknown"}</p>
-          {/* Include other metadata here */}
+    <div className="fixed w-full h-full inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div ref={modalRef} className="bg-white p-3 rounded-lg max-w-1/2">
+        <div className="flex">
+          <div className="relative max-w-1/2 w-[50vw] h-[80vh]">
+            <Image
+              src={image.imageUrl}
+              alt={`Image`}
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="text-xl">
+            <p>Camera Make: {image.metadata.cameraMake || "Unknown"}</p>
+            <p>Camera Model: {image.metadata.cameraModel || "Unknown"}</p>
+            {/* Include other metadata here */}
+          </div>
         </div>
       </div>
     </div>
